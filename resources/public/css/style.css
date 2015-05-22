@@ -3,3 +3,119 @@ body {
    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
    font-weight: 300;
 }
+span.done {
+  color: grey;
+  text-decoration: line-through;
+}
+li.todo {
+  list-style-type: none;
+}
+li.todo > span {
+  margin-left: 5px;
+}
+h1 {
+  color: rgba(175, 47, 47, 0.15);
+  text-align: center;
+  font-weight: 100;
+  font-size: 3em;
+}
+a {
+  text-decoration: none;
+}
+/* App parent */
+div#todos {
+  display:flex;
+  font-size: 1.3em;
+}
+/* Inner container */
+div.todos {
+  margin: auto;
+  display:flex;
+  width: 500px;
+  flex-direction:column;
+}
+/* Top bar */
+.top-bar {
+  border: 1px solid #ededed;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.top-bar input {
+  flex: 1;
+  border: none;
+  padding-left: 10px;
+  font-size: 1.1em;
+}
+.mark-as-done {
+  font-size: .7em;
+  color: #ddd;
+  padding:10px;
+}
+.mark-as-done.active {
+  color: #444;
+}
+/* Making the input placholder italic */
+::-webkit-input-placeholder { font-style: italic; }
+::-moz-placeholder { font-style: italic; } /* firefox 19+ */
+:-ms-input-placeholder { font-style: italic; } /* ie */
+input:-moz-placeholder { font-style: italic; }
+/* Todos body */
+div.todos ul {
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+li.todo {
+  min-height: 40px;
+  padding: 5px 5px 5px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ededed;
+  border-top: none;
+}
+li.todo > input {
+  margin: 10px;
+  height: 20px;
+}
+li.todo > span {
+  padding-left: 10px;
+  width: 260px;
+}
+/* Bottom bar */
+.bottom-bar {
+  display: flex;
+  font-size: .6em;
+  justify-content: space-between;
+  padding: 5px;
+}
+.bottom-bar a {
+  text-decoration: none;
+  color: #333;
+  padding: 2px;
+}
+/* Clear completed */
+.bottom-bar a:hover {
+  text-decoration: underline;
+}
+.bottom-bar a.invisible {
+  color: #fff;
+}
+/* Filters: All / Active / Completed */
+.bottom-bar .filters a {
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+.bottom-bar .filters a:hover {
+  border-color: rgba(175, 47, 47, 0.1);
+  text-decoration: none;
+}
+.bottom-bar .filters a.active {
+  border-color: rgba(175, 47, 47, 0.2)
+}
