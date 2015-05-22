@@ -1,5 +1,6 @@
 (ns ^:figwheel-always om-tut.core
     (:require[om.core :as om :include-macros true]
+             [om-tools.core :refer-macros [defcomponent]]
              [sablono.core :refer-macros [html]]
              [alandipert.storage-atom :refer [local-storage]]
              [om-tut.item :refer [todo-item]]))
@@ -92,6 +93,12 @@
 
 (defn todo-list [data owner]
   (om/component
+    (let [remove-todo-from-list (fn [todo todos]
+                                 (vec (remove #(= % todo) todos)))
+         delete-todo! (fn [todo]
+                        (om/transact! data :todos
+                                      (fn [todos]
+                                        (remove-todo-from-list todo todos))))]
    (html
     [:div.todos
      [:h1 "todos"]
@@ -100,8 +107,9 @@
       (om/build todo-adder (:todos data))]
      [:ul
       (om/build-all todo-item
-                    (filter-todos (:filter data) (:todos data)))]
-     (om/build bottom-bar data)])))
+                    (filter-todos (:filter data) (:todos data))
+                    {:opts {:delete-self! delete-todo!}})]
+     (om/build bottom-bar data)]))))
 
 (om/root todo-list
          app-state

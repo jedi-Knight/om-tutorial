@@ -119,3 +119,16 @@ li.todo > span {
 .bottom-bar .filters a.active {
   border-color: rgba(175, 47, 47, 0.2)
 }
+li.todo div {
+  flex: 1;
+  display:flex;
+  justify-content: space-between;
+}
+li.todo .destroy {
+  display:none;
+}
+li.todo:hover .destroy {
+  display:inline;
+  color: #d88;
+  font-weight: bold;
+}
